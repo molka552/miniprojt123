@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<style>
+.form select{
+        padding: 10px;
+        
+    }    
+    
+    </style>
+</head>
+<body>
+<h1 class="text-white text-center font-weight-bold bg-success" style="font-size: 55px;">inscription </h1>
+
+	<div class="container"><br>
+		
+		<div class="col-lg-6 m-auto d-block">
+			
+			<form action="ins.php" class="bg-light" onsubmit="return validation()" method="post"><!--onsubmit="return validation()"-->
+				
+				<div class="form-group">
+					<label for="user" class="font-weight-bold"> Nom : </label>
+					<input type="text" name="user" class="form-control" id="user" autocomplete="off">
+					<span id="username" class="text-danger font-weight-bold"> </span>
+				</div>
+				<div class="form-group">
+					<label for="pr" class="font-weight-bold"> Prenom : </label>
+					<input type="text" name="pr" class="form-control" id="pr" autocomplete="off">
+					<span id="prr" class="text-danger font-weight-bold"> </span>
+				</div>
+	<div class="form-group">
+					<label class="font-weight-bold">Numéro de cin: </label>
+					<input type="text" name="Ncin" class="form-control" id="Ncin" autocomplete="off">
+					<span id="Ncin1" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Mots de passe : </label>
+					<input type="password" name="pass" class="form-control" id="pass" autocomplete="off">
+					<span id="passwords" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Confirme mots de passe : </label>
+					<input type="password" name="conpass" class="form-control" id="conpass" autocomplete="off">
+					<span id="confrmpass" class="text-danger font-weight-bold"> </span>
+				</div>
+				  <div>
+                      <label class="font-weight-bold">Classe:</label>
+     <select name="c" id="c" >
+         <option value="0" >choisir :</option>
+     <option value="TI" >TI</option>
+     <option value="DSI">DSI</option>
+     <option value="RSI">RSI</option>
+     <option value="AA">AA</option>
+     </select> 
+    <span id="cr" class="text-danger font-weight-bold"> </span>
+</div>
+
+				<div class="form-group">
+					<label class="font-weight-bold"> Email: </label>
+					<input type="text" name="email" class="form-control" id="emails" autocomplete="off">
+					<span id="emailids" class="text-danger font-weight-bold"> </span>
+				</div>
+
+				<input type="submit" name="submit" value="Envoyez" class="btn btn-success" 	autocomplete="off" ><br><br>
+				<input type="reset" value="Effacer" class="btn btn-success">
+
+
+			</form><br><br>
+
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript">
+     /*   function verifnp(ch)
+        {
+        for (var i=0;i<ch.length;i++)
+            {
+                var c= ch.charAt(i).toUpperCase;
+                if ((c<'A')||(c>'Z'))
+                    return false;
+            }
+           return true; 
+        }*/
+		
+
+		function validation(){
+
+			var user = document.getElementById('user').value;
+            var p= document.getElementById('pr').value;
+			var pass = document.getElementById('pass').value;
+            var Nc=document.getElementById('Ncin').value;
+			var confirmpass = document.getElementById('conpass').value;
+			var emails = document.getElementById('emails').value;
+            var ch= document.getElementById('c').value;
+
+			if(user == ""){
+				document.getElementById('username').innerHTML =" ** SVP saisir votre Nom";
+				return false;
+			}
+			if((user.length <= 2) || (user.length > 20)) {
+				document.getElementById('username').innerHTML =" ** La longueur du nom d'utilisateur doit être comprise entre 2 et 20";
+				return false;	
+			}
+			if(!isNaN(user)){
+				document.getElementById('username').innerHTML =" ** seuls les caractères sont autorisés";
+				return false;
+			}
+           /*   if(!verifnp(p))
+            {
+             document.getElementById('prr').innerHTML =" ** le prenom ne contient pas des chiffre";
+				return false;   
+            }
+           if(!verifnp(user))
+            {
+             document.getElementById('username').innerHTML =" ** le Nom ne contient pas des chiffre";
+                return false;   
+            }*/
+
+if(p == ""){
+				document.getElementById('prr').innerHTML =" ** SVP saisir votre Prenom";
+				return false;
+			}
+			if((p.length <= 2) || (p.length > 20)) {
+				document.getElementById('prr').innerHTML =" ** La longueur du prénom d'utilisateur doit être comprise entre 2 et 20";
+				return false;	
+			}
+			if(!isNaN(p)){
+				document.getElementById('prr').innerHTML =" ** seuls les caractères sont autorisés";
+				return false;
+			}
+        
+            
+if(Nc == ""){
+				document.getElementById('Ncin1').innerHTML =" ** SVP saisir votre Numéro de cin";
+				return false;
+			}
+			if(isNaN(Nc)){
+				document.getElementById('Ncin1').innerHTML =" **l'utilisateur ne doit écrire que des chiffres et non des caractères";
+				return false;
+			}
+			if(Nc.length!=8){
+				document.getElementById('Ncin1').innerHTML =" ** Le numéro de cin doit être composé de 8 chiffres uniquement";
+				return false;
+			}
+
+
+
+
+
+			if(pass == ""){
+				document.getElementById('passwords').innerHTML =" ** Veuillez remplir le champ du mot de passe";
+				return false;
+			}
+			if((pass.length <= 5) || (pass.length > 20)) {
+				document.getElementById('passwords').innerHTML =" ** La longueur des mots de passe doit être comprise entre 5 et 20";
+				return false;	
+			}
+
+
+			if(pass!=confirmpass){
+				document.getElementById('confrmpass').innerHTML =" **Le mot de passe ne correspond pas au mot de passe de confirmation";
+				return false;
+			}
+
+
+
+			if(confirmpass == ""){
+				document.getElementById('confrmpass').innerHTML =" **Veuillez remplir le champ de confirmation du mot de passe";
+				return false;
+			}
+
+
+
+
+
+			if(emails == ""){
+				document.getElementById('emailids').innerHTML =" ** Veuillez remplir le champ email idx`";
+				return false;
+			}
+			if(emails.indexOf('@') <= 0 ){
+				document.getElementById('emailids').innerHTML =" ** @ Position invalide";
+				return false;
+			}
+
+			if((emails.charAt(emails.length-4)!='.') && (emails.charAt(emails.length-3)!='.')){
+				document.getElementById('emailids').innerHTML =" ** . Position invalide";
+				return false;
+			}
+            if (ch.selectedIndex ==0)
+                {
+                document.getElementById('cr').innerHTML="** choisissez la classe";
+                    return false;
+                }
+		}
+
+	</script>
+
+</body>
+</html>
